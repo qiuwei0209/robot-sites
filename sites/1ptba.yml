@@ -2,6 +2,7 @@ id: 1ptba
 name: 壹PT吧
 domain: https://1ptba.com/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/1ptba.yml
 
 login:
   test:
