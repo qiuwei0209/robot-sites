@@ -3,6 +3,7 @@ id: hdai
 name: 海带
 domain: https://www.hd.ai/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdai.yml
 
 login:
   test:

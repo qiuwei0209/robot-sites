@@ -2,6 +2,7 @@ id: pttime
 name: pt时间
 domain: https://www.pttime.org/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/pttime.yml
 
 login:
   test:

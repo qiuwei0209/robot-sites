@@ -2,6 +2,7 @@ id: U2
 name: 幼儿园
 domain: https://u2.dmhy.org/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/U2.yml
 
 login:
   test:

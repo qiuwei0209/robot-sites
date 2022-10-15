@@ -2,6 +2,7 @@ id: HDarea
 name: 高清视界
 domain: https://www.hdarea.co/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdarea.yml
 
 login:
   test:

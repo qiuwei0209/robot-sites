@@ -2,6 +2,7 @@ id: htpt
 name: 海棠
 domain: https://www.htpt.cc/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/htpt.yml
 
 login:
   test:

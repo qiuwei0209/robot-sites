@@ -3,6 +3,8 @@ name: RARBG
 domain: https://rarbg.to
 encoding: UTF-8
 parser: RARBG
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/rarbg.yml
+
 #订阅时搜索的值: cn_name/en_name/imdb_id
 sub_search_value_type:
   - imdb_id

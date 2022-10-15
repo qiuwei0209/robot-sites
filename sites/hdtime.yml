@@ -2,6 +2,7 @@ id: HDTime
 name: 高清时间
 domain: https://hdtime.org/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdtime.yml
 
 login:
   test:

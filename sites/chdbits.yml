@@ -2,6 +2,7 @@ id: chdbits
 name: 彩虹岛
 domain: https://chdbits.co/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/chdbits.yml
 
 login:
   test:

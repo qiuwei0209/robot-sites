@@ -2,6 +2,7 @@ id: joyhd
 name: 开心
 domain: https://www.joyhd.net/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/joyhd.yml
 
 login:
   test:

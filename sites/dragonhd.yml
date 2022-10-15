@@ -2,6 +2,7 @@ id: dragonhd
 name: 龙之家
 domain: https://www.dragonhd.xyz/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/dragonhd.yml
 
 login:
   test:

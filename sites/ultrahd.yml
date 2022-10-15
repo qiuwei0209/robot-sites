@@ -2,6 +2,7 @@ id: ultrahd
 name: ultrahd
 domain: https://ultrahd.net/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/ultrahd.yml
 
 login:
   test:

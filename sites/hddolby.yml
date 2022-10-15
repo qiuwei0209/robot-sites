@@ -2,6 +2,7 @@ id: hddolby
 name: 高清杜比
 domain: https://www.hddolby.com/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hddolby.yml
 
 login:
   test:

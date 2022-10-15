@@ -2,6 +2,7 @@ id: TCCF
 name: 他吹吹风
 domain: https://et8.org/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/tccf.yml
 
 login:
   test:

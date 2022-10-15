@@ -2,6 +2,8 @@ id: filelist
 name: filelist
 domain: https://filelist.io/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/filelist.yml
+
 sub_search_value_type:
   - imdb_id
 login:

@@ -2,6 +2,7 @@ id: ourbits
 name: 我堡
 domain: https://ourbits.club/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/ourbits.yml
 
 login:
   test:

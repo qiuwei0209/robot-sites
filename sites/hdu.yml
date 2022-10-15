@@ -2,6 +2,7 @@ id: HDU
 name: 好多油
 domain: https://pt.hdupt.com/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdu.yml
 
 login:
   test:

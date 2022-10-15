@@ -2,6 +2,7 @@ id: gainbound
 name: 丐帮
 domain: https://gainbound.net/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/gainbound.yml
 
 login:
   test:

@@ -2,6 +2,7 @@ id: beitai
 name: 备胎
 domain: https://www.beitai.pt/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/beitai.yml
 
 login:
   test:

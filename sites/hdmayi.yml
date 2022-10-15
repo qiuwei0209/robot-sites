@@ -2,6 +2,7 @@ id: hdmayi
 name: 小蚂蚁
 domain: http://hdmayi.com/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdmayi.yml
 
 login:
   test:

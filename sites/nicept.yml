@@ -2,6 +2,7 @@ id: nicept
 name: 老师
 domain: https://www.nicept.net/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/nicept.yml
 
 login:
   test:

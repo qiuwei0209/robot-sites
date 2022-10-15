@@ -2,6 +2,8 @@ id: iptorrents
 name: iptorrents
 domain: https://iptorrents.com/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/iptorrents.yml
+
 sub_search_value_type:
   - imdb_id
 login:

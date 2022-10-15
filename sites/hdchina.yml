@@ -2,6 +2,7 @@ id: hdchina
 name: 瓷器
 domain: https://hdchina.org/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdchina.yml
 
 login:
   test:

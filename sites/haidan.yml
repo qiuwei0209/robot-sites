@@ -2,6 +2,7 @@ id: haidan
 name: 海胆
 domain: https://www.haidan.video/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/haidan.yml
 
 login:
   test:

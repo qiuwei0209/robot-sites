@@ -2,6 +2,7 @@ id: Avgv
 name: 艾薇
 domain: https://avgv.cc/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/avgv.yml
 
 login:
   test:

@@ -2,6 +2,7 @@ id: pterclub
 name: 猫站
 domain: https://pterclub.com/
 encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/pterclub.yml
 
 login:
   test:
