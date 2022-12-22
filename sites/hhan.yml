@@ -1,49 +1,43 @@
-id: hdsky
-name: 天空
-domain: https://hdsky.me/
+id: hhan
+name: 憨憨
+domain: https://hhanclub.top/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdsky.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/app/sites/hhan.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐MV" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/运体" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/无损音乐" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
-  - { id: 410, cate_level1: Movie, cate_level2: Movies , cate_level2_desc: "Movies" }
-  - { id: 411, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集(合集）" }
-  - { id: 412, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/海外剧集(分集）" }
-  - { id: 413, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/海外剧集(合集）" }
-  - { id: 414, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/海外综艺(分集）" }
-  - { id: 415, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/海外综艺(合集）" }
+  - { id: 401, cate_level1: Movie, cate_level2: Movies,cate_level2_ desc: "电影" }
+  - { id: 402, cate_level1: TV , cate_level2: TV, cate_level2_desc: "电视剧" }
+  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "综艺" }
+  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "纪录片" }
+  - { id: 405, cate_level1: Anime, cate_level2: TV/Anime, cate_level2_desc: "动漫" }
+  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MV" }
+  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports" }
+  - { id: 408, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "HQ Audio" }
+  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc" }
 
 userinfo:
-  path: https://hdsky.me/rules.php
+  path: https://hhanclub.top/index.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://hhanclub.top/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://hhanclub.top/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://hhanclub.top/userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -95,15 +89,7 @@ search:
     sort: "{{ query.sort }}"
     type: "{{ query.type }}"
     page: "{{ query.page }}"
-download:
-  method: POST
-  content_type: "application/x-www-form-urlencoded"
-  #hdsky post时会带两个随机数参数
-  args:
-    - name: x
-      value: "{{ range(5, 20) | random }}"
-    - name: y
-      value: "{{ range(5, 20) | random }}"
+
 torrents:
   list:
     selector: table.torrents > tr:has(table.torrentname)
@@ -134,11 +120,14 @@ torrents:
       selector: a[href^="details.php?id="]
       attribute: href
     download:
-      selector: form[action*="/download.php?id="]
-      attribute: action
+      selector: a[href^="download.php?id="]
+      attribute: href
     imdbid:
       selector: div.imdb_100 > a
       attribute: href
+      filters:
+        - name: re_search
+          args: [ 'tt\d+',0 ]
     date_elapsed:
       # 站点设置，已去时间 (默认)
       selector: td:nth-child(4) > span[title]
@@ -154,7 +143,7 @@ torrents:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     size:
-      selector: td.rowfollow:nth-child(5)
+      selector: td:nth-child(5)
     seeders:
       selector: td:nth-child(6)
     leechers:
@@ -185,46 +174,14 @@ torrents:
           args: [ '\d+-\d+-\d+ \d+:\d+:\d+', 0 ]
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
-    tags:
-      selectors: td.embedded > span.optiontag
-    subject:
+    description:
       selector: td:nth-child(2) > table > tr > td.embedded
-      remove: img,a,b,span
-      filters:
-        - name: replace
-          args: [ "[优惠剩余时间：]","" ]
-    description:
-      text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %}"
-
-detail:
-  item:
-    selector: table.mainouter > tr:last-child
-  fields:
-    downloadvolumefactor:
+      contents: -1
+    minimumratio:
       case:
-        font.halfdown: 0.5
-        "*": 1
-    title:
-      selector: h1[id="top"]
-      remove: b
-    download:
-      selector: form.index
-      attribute: action
-    filename:
-      selector: form.index > input
-      attribute: value
-    description:
-      selector: table > tr:nth-child(3) > td:last-child
-    intro:
-      selector: table > tr:nth-child(9) > td > div[id="kdescr"]
-    date:
-      selector: table > tr:nth-child(1) > td > span[title]
-      attribute: title
-      filters:
-        - name: dateparse
-          args: "%Y-%m-%d %H:%M:%S"
-    id:
-      text: "{{fields['download']}}"
-      filters:
-        - name: re_search
-          args: [ 'id=(\d+)', 1 ]
+        img.hitandrun: 1
+        "*": 0
+    minimumseedtime:
+      case:
+        img.hitandrun: 259200
+        "*": 0
