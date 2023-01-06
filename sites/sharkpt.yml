@@ -1,47 +1,44 @@
-id: kamept
-name: CosAV
-domain: https://kamept.com/
+id: sharkpt
+name: 鲨鱼
+domain: https://sharkpt.net/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/kamept.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/sharkpt.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 410, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "同人AV" }
-  - { id: 411, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "同人动画" }
-  - { id: 413, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "男娘" }
-  - { id: 414, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "VR同人" }
-  - { id: 415, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "Gal Game" }
-  - { id: 417, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "福利鸡" }
-  - { id: 418, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "汉化Gal" }
-  - { id: 419, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "里番" }
-  - { id: 420, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "外语音声" }
-  - { id: 421, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "中文音声" }
-  - { id: 422, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "音声视频" }
-  - { id: 423, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "MMD" }
-  - { id: 424, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "同人漫画" }
+  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
+  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
+  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
+  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
+  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
+  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Music Videos/音乐MV" }
+  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/体育" }
+  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/音乐" }
+  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
+
 
 userinfo:
-  path: https://kamept.com/rules.php
+  path: https://sharkpt.net/rules.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="https://kamept.com/userdetails.php?id="]
+      selector: a[href^="https://sharkpt.net/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="https://kamept.com/userdetails.php?id="]
+      selector: a[href^="https://sharkpt.net/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="https://kamept.com/userdetails.php?id="]
+      selector: a[href^="https://sharkpt.net/userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -75,7 +72,6 @@ userinfo:
       case:
         a[class^="VIP"]: true
         "*": false
-
 search:
   paths:
     - path: torrents.php
@@ -127,12 +123,12 @@ torrents:
     download:
       selector: a[href^="download.php?id="]
       attribute: href
-    # imdbid:
-    #   selector: div.imdb_100 > a
-    #   attribute: href
-    #   filters:
-    #     - name: re_search
-    #       args: [ 'tt\d+',0 ]
+    imdbid:
+      selector: div.imdb_100 > a
+      attribute: href
+      filters:
+        - name: re_search
+          args: [ 'tt\d+',0 ]
     date_elapsed:
       # 站点设置，已去时间 (默认)
       selector: td:nth-child(4) > span[title]
@@ -182,3 +178,8 @@ torrents:
     description:
       selector: td:nth-child(2) > table > tr > td.embedded
       contents: -1
+    minimumratio:
+      text: 1
+    minimumseedtime:
+      #做种25小时
+      text: 604800
