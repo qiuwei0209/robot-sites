@@ -1,53 +1,43 @@
-id: keepfrds
-name: 朋友
-domain: https://pt.keepfrds.com/
+id: azusa
+name: 梓喵
+domain: https://azusa.wiki/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/keepfrds.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/htnanako/movie-robot-public/main/app/sites/azusa.yml
 
 login:
   test:
-    selector: a[onclick="document.getElementById('logout').submit();"]
+    selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: "电影", cate_level2_desc: "电影" }
-  - { id: 301, cate_level1: Movie, cate_level2: "电影(合集)", cate_level2_desc: "电影(合集)" }
-  - { id: 404, cate_level1: Documentary, cate_level2: "纪录片", cate_level2_desc: "纪录片" }
-  - { id: 304, cate_level1: Documentary, cate_level2: "纪录片(合集)", cate_level2_desc: "纪录片(合集)" }
-  - { id: 405, cate_level1: Anime, cate_level2: "动漫", cate_level2_desc: "动漫" }
-  - { id: 305, cate_level1: Anime, cate_level2: "动漫(合集)", cate_level2_desc: "动漫(合集)" }
-  - { id: 402, cate_level1: TV, cate_level2: "剧集", cate_level2_desc: "剧集" }
-  - { id: 302, cate_level1: TV, cate_level2: "剧集(合集)", cate_level2_desc: "剧集(合集)" }
-  - { id: 403, cate_level1: TV, cate_level2: "综艺", cate_level2_desc: "综艺" }
-  - { id: 303, cate_level1: TV, cate_level2: "综艺(合集)", cate_level2_desc: "综艺(合集)" }
-  - { id: 407, cate_level1: TV, cate_level2: "体育", cate_level2_desc: "体育" }
-  - { id: 307, cate_level1: TV, cate_level2: "体育(合集)", cate_level2_desc: "体育(合集)" }
-  - { id: 406, cate_level1: Music, cate_level2: "音乐录影带", cate_level2_desc: "音乐录影带" }
-  - { id: 306, cate_level1: Music, cate_level2: "音乐录影带(合集)", cate_level2_desc: "音乐录影带(合集)" }
-  - { id: 408, cate_level1: Music, cate_level2: "音乐", cate_level2_desc: "音乐" }
-  - { id: 308, cate_level1: Music, cate_level2: "音乐(合集)", cate_level2_desc: "音乐(合集)" }
-  - { id: 409, cate_level1: Other, cate_level2: "其他", cate_level2_desc: "其他" }
-  - { id: 309, cate_level1: Other, cate_level2: "其他(合集)", cate_level2_desc: "其他(合集)" }
-  - { id: 300, cate_level1: Other, cate_level2: "回收站", cate_level2_desc: "回收站" }
+  - {id: 402, cate_level1: Anime, cate_level2: Comic, desc: "漫画"}
+  - {id: 403, cate_level1: Anime, cate_level2: Light Novel, desc: "轻小说"}
+  - {id: 404, cate_level1: Anime, cate_level2: Game, desc: "游戏"}
+  - {id: 407, cate_level1: Anime, cate_level2: CG, desc: "CG"}
+  - {id: 409, cate_level1: Music, cate_level2: Audio, desc: "音乐"}
+
 
 userinfo:
-  path: https://pt.keepfrds.com/rules.php
+  path: https://azusa.wiki/index.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="/userdetails.php?id="]
+      selector: a[href^="https://azusa.wiki/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="/userdetails.php?id="]
+      selector: a[href^="https://azusa.wiki/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="/userdetails.php?id="]
+      selector: a[href^="https://azusa.wiki/userdetails.php?id="]
+      filters:
+        - name: re_search
+          args: [ '\w+', 0 ]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -81,6 +71,7 @@ userinfo:
       case:
         a[class^="VIP"]: true
         "*": false
+
 search:
   paths:
     - path: torrents.php
@@ -102,7 +93,7 @@ search:
 
 torrents:
   list:
-    selector: table.torrents > tr:has(table.torrentname)
+    selector: table.torrents > tr:has(table)
   fields:
     id:
       selector: a[href^="details.php?id="]
@@ -110,10 +101,20 @@ torrents:
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
+    title_default:
+      selector: a[href^="details.php?id="]
+    title_optional:
+      optional: true
+      selector: a[title][href^="details.php?id="]
+      attribute: title
+    title:
+      text: "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
     category:
       selector: a[href^="?cat="]
       attribute: href
       filters:
+        - name: replace
+          args: [ "?", "" ]
         - name: querystring
           args: cat
     details:
@@ -122,21 +123,19 @@ torrents:
     download:
       selector: a[href^="download.php?id="]
       attribute: href
-    size:
-      selector: td:nth-child(5)
-    grabs:
-      selector: td:nth-child(8)
-    seeders:
-      selector: td:nth-child(6)
-    leechers:
-      selector: td:nth-child(7)
+    imdbid:
+      selector: div.imdb_100 > a
+      attribute: href
+      filters:
+        - name: re_search
+          args: [ 'tt\d+',0 ]
     date_elapsed:
-      # time type: time elapsed (default)
+      # 站点设置，已去时间 (默认)
       selector: td:nth-child(4) > span[title]
       attribute: title
       optional: true
     date_added:
-      # time added
+      # 站点设置，实际时间
       selector: td:nth-child(4):not(:has(span))
       optional: true
     date:
@@ -144,6 +143,14 @@ torrents:
       filters:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
+    size:
+      selector: td:nth-child(5)
+    seeders:
+      selector: td:nth-child(6)
+    leechers:
+      selector: td:nth-child(7)
+    grabs:
+      selector: td:nth-child(8)
     downloadvolumefactor:
       case:
         img.pro_free: 0
@@ -159,6 +166,8 @@ torrents:
         img.pro_2up: 2
         "*": 1
     free_deadline:
+      default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
+      default_value_format: '%Y-%m-%d %H:%M:%S.%f'
       selector: img.pro_free,img.pro_free2up
       attribute: onmouseover
       filters:
@@ -166,9 +175,22 @@ torrents:
           args: [ '\d+-\d+-\d+ \d+:\d+:\d+', 0 ]
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
-    description:
-      selector: a[title][href^="details.php?id="]
+    tags:
+      selectors: td.embedded > span[style]
+    checked:
+      selector: td.embedded > span[title]:has(svg[viewBox='0 0 1024 1024'])
       attribute: title
-    title:
-      selector: table.torrentname > tr > td
-      remove: a,b
+    subject:
+      selector: td.embedded:has(a[href^="details.php?id="])
+      remove: a,img,div,span,font,b
+    description:
+      text: "{% if fields['tags']%}{{ fields['subject']+' '+fields['tags']|join(' ') }}{% else %}{{ fields['subject'] }}{% endif %} {% if fields['checked'] %}❓{% else %}✅{% endif %}"
+    minimumratio:
+    minimumratio:
+      case:
+        img.hitandrun: 1
+        "*": 0
+    minimumseedtime:
+      case:
+        img.hitandrun: 172800
+        "*": 0

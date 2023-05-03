@@ -100,7 +100,7 @@ torrents:
     selector: table.torrents > tr:has(table.torrentname)
   fields:
     id:
-      selector: a[href^="details"]
+      selector: a[href^="details.php?id="]
       attribute: href
       filters:
         - name: re_search
@@ -112,15 +112,15 @@ torrents:
         - name: querystring
           args: cat
     title_default:
-      selector: a[href^="details"]
+      selector: a[href^="details.php?id="]
     title_optional:
       optional: true
-      selector: a[title][href^="details"]
+      selector: a[title][href^="details.php?id="]
       attribute: title
     title:
       text: "{% if fields['title_optional'] %}{{ fields['title_optional'] }}{% else %}{{ fields['title_default'] }}{% endif %}"
     details:
-      selector: a[href^="details"]
+      selector: a[href^="details.php?id="]
       attribute: href
     poster:
       selector: img[data-orig]

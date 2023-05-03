@@ -6,7 +6,7 @@ config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/rob
 
 login:
   test:
-    selector: a[href="logout.php"]
+    selector: a[href^="userdetails.php"]
 
 category_mappings:
     - {id: 401, cate_level1: Movie, cate_level2: 电影, cate_level2_desc: "电影"}
@@ -158,9 +158,9 @@ torrents:
         "*": 0
     uploadvolumefactor:
       case:
-        # font.twouphalfdown: 2
-        # font.twoupfree: 2
-        # font.twoup: 2
+        font.twouphalfdown: 2
+        font.twoupfree: 2
+        font.twoup: 2
         "*": 1
     description:
       selector: td:nth-child(2)
