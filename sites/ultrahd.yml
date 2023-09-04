@@ -83,14 +83,15 @@ search:
     # 0 title, 1 descr, 3 uploader, 4 imdburl (searching imdburl does not work with tt1234567, but descr is good)
     search_area: "{% if query.imdb_id %}4{% else %}0{%endif%}"
     # 0 AND, 1 OR, 2 exact
-    search_mode: 0
+    search_mode: 2
+    # 0 AND, 2 ACCURACY
     sort: "{{ query.sort }}"
     type: "{{ query.type }}"
     page: "{{ query.page }}"
 
 torrents:
   list:
-    selector: table.torrents > tr:has(table.torrentname)
+    selector: table.torrents > tr:has(table)
   fields:
     id:
       selector: a[href^="details.php?id="]

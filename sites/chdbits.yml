@@ -1,6 +1,6 @@
 id: chdbits
 name: 彩虹岛
-domain: https://chdbits.co/
+domain: https://ptchdbits.co/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/chdbits.yml
 
@@ -19,7 +19,7 @@ category_mappings:
   - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc" }
   - { id: 408, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "HQ Audio" }
 userinfo:
-  path: https://chdbits.co//rules.php
+  path: https://ptchdbits.co/rules.php
   item:
     selector: table[id="info_block"]
   fields:
@@ -91,7 +91,7 @@ search:
 
 torrents:
   list:
-    selector: table.torrents > tr:has(table.torrentname)
+    selector: table.torrents > tr:has(table)
   fields:
     id:
       selector: a[href^="details.php?id="]
