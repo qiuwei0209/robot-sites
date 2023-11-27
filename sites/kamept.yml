@@ -6,7 +6,7 @@ config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/rob
 
 login:
   test:
-    selector: a[href="logout.php"]
+    selector: a[href="medal.php"]
 
 category_mappings:
   - { id: 410, cate_level1: TV, cate_level2: TV,cate_level2_ desc: "同人AV" }
