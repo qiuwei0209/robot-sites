@@ -2,7 +2,7 @@ id: HDFun
 name: 空间
 domain: https://hdfun.me/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdzone.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdfun.yml
 
 login:
   test:
