@@ -1,0 +1,111 @@
+id: avistaz
+name: avistaz
+domain: https://avistaz.to/
+encoding: UTF-8
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/avistaz.yml
+
+login:
+  test:
+    selector: a[href="https://avistaz.to/messenger"]
+
+category_mappings:
+  - { id: "Movie Torrent", cate_level1: Movie, cate_level2: 电影, cate_level2_desc: "电影" }
+  - { id: "TV-Show Torrent", cate_level1: TV, cate_level2: 电视剧, cate_level2_desc: "电视剧" }
+
+userinfo:
+  path: https://avistaz.to/support
+  item:
+    selector: div.ratio-bar
+  fields:
+    uid:
+      text: 0
+    user_group:
+      text: 'user'
+    username:
+      default_value: '未知用户名'
+      selector: div > ul > li:nth-child(1) > a > span
+    uploaded:
+      default_value: 0
+      selector: div > ul > li:nth-child(3)
+      content: -1
+    downloaded:
+      default_value: 0
+      selector: div > ul > li:nth-child(4)
+      content: -1
+    seeding:
+      default_value: 0
+      selector: div > ul > li:nth-child(7)
+      contents: -1
+    leeching:
+      default_value: 0
+      selector: div > ul > li:nth-child(8)
+      content: -1
+    vip_group:
+      case:
+        a[class^="VIP"]: true
+        "*": false
+search:
+  paths:
+    - path: torrents
+      method: get
+  query:
+    $raw: "{% for c in query.cates %}category[]={{c}}{% endfor %}"
+    search: "{{ query.keyword }}"
+    order: "{{ query.sort }}"
+    page: "{{ query.page }}"
+
+torrents:
+  list:
+    selector: section.content > div.block > div.table-responsive > table > tbody > tr:has(i)
+  fields:
+    id:
+      selector: a[href^="https://avistaz.to/torrent/"]
+      attribute: href
+      filters:
+        - name: re_search
+          args: [ '\d+', 0 ]
+    title:
+      selector: a[href^="https://avistaz.to/torrent/"]
+    category:
+      selector: td:nth-child(1) > i.fa.fa-video.category-icon[title]
+      attribute: title
+    details:
+      selector: a[href^="https://avistaz.to/torrent/"]
+      attribute: href
+      filters:
+        - name: replace
+          args: ["https://avistaz.to/", ""]
+    download:
+      selector: a[href^="https://avistaz.to/download/torrent/"]
+      attribute: href
+    poster:
+      selector: td:nth-child(2) > div.screen-image.d-inline-block.float-left.mr-1 > img
+      attribute: src
+    date:
+      selector: td:nth-child(4)
+      filters:
+        - name: date_en_elapsed_parse
+    size:
+      selector: td:nth-child(5)
+    seeders:
+      selector: td:nth-child(6)
+    leechers:
+      selector: td:nth-child(7)
+    grabs:
+      selector: td:nth-child(8)
+    downloadvolumefactor:
+      case:
+        i.fa.fa-star.text-gold: 0
+        i.fa.fa-star-half-o.text-pink: 0.5
+        "*": 1
+    uploadvolumefactor:
+      case:
+        i.fa.fa-diamond.text-green: 2
+        "*": 1
+    free_deadline:
+      default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
+      default_value_format: '%Y-%m-%d %H:%M:%S.%f'
+    minimumratio:
+      text: 1
+    minimumseedtime:
+      text: 2073600

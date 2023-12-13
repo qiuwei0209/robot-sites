@@ -1,8 +1,8 @@
-id: hdmayi
-name: 小蚂蚁
-domain: https://hdmayi.com/
+id: freefarm
+name: 自由农场
+domain: https://pt.0ff.cc/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdmayi.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/freefarm.yml
 
 login:
   test:
@@ -10,34 +10,34 @@ login:
 
 category_mappings:
   - { id: 401, cate_level1: Movie, cate_level2: 电影, cate_level2_desc: "电影" }
-  - { id: 404, cate_level1: Documentary, cate_level2: 纪录片, cate_level2_desc: "纪录片" }
-  - { id: 405, cate_level1: Anime, cate_level2: 动漫, cate_level2_desc: "动漫" }
   - { id: 402, cate_level1: TV, cate_level2: 电视剧, cate_level2_desc: "电视剧" }
-  - { id: 403, cate_level1: TV, cate_level2: 综艺, cate_level2_desc: "综艺" }
+  - { id: 403, cate_level1: Documentary, cate_level2: 纪录片, cate_level2_desc: "纪录片" }
+  - { id: 404, cate_level1: TV, cate_level2: 综艺, cate_level2_desc: "综艺" }
+  - { id: 405, cate_level1: Anime, cate_level2: 动漫, cate_level2_desc: "动漫" }
   - { id: 406, cate_level1: Music, cate_level2: 音乐, cate_level2_desc: "音乐MV" }
-  - { id: 407, cate_level1: TV, cate_level2: 体育, cate_level2_desc: "体育" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "其他" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "无损音乐" }
+  - { id: 407, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "无损音乐" }
+  - { id: 408, cate_level1: TV, cate_level2: 体育, cate_level2_desc: "体育" }
+  - { id: 428, cate_level1: Other, cate_level2: Other, cate_level2_desc: "其他" }
 
 userinfo:
-  path: https://hdmayi.com/rules.php
+  path: https://pt.0ff.cc/rules.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="https://hdmayi.com/userdetails.php?id="]
+      selector: a[href^="https://pt.0ff.cc/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="https://hdmayi.com/userdetails.php?id="]
+      selector: a[href^="https://pt.0ff.cc/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="https://hdmayi.com/userdetails.php?id="]
+      selector: a[href^="https://pt.0ff.cc/userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
