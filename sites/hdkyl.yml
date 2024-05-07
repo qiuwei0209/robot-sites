@@ -25,7 +25,7 @@ category_mappings:
   - { id: 421, cate_level1: TV, cate_level2: "Playlet/短剧", cate_level2_desc: "Playlet/短剧" }
 
 userinfo:
-  path: https://www.hdkyl.in/rules.php
+  path: https://www.hdkyl.in/index.php
   item:
     selector: table[id="info_block"]
   fields:

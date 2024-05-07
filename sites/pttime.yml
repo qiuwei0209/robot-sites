@@ -38,7 +38,7 @@ category_mappings:
   - { id: 490, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Other(其它)" }
 
 userinfo:
-  path: https://www.pttime.org/index.php
+  path: https://www.pttime.org/rules.php
   item:
     selector: table[id="info_block"]
   fields:
@@ -58,21 +58,23 @@ userinfo:
       selector: a[href^="userdetails.php?id="].PowerUser_Name
     share_ratio:
       default_value: ''
-      selector: font[class="color_ratio"]
+      selector: tr:nth-child(2) span:nth-child(1) > font
       method: next_sibling
       filters:
+        - name: replace
+          args: [ "≥", "" ]
         - name: replace
           args: [ '无限','inf' ]
     uploaded:
       default_value: 0
-      selector: font[class="color_uploaded"]
+      selector: tr:nth-child(2) > td > div > span:nth-child(2) > font
       method: next_sibling
       filters:
         - name: replace
           args: [ '无限','inf' ]
     downloaded:
       default_value: 0
-      selector: font[class="color_downloaded"]
+      selector: tr:nth-child(2) > td > div > span:nth-child(3) > font
       method: next_sibling
       filters:
         - name: replace
