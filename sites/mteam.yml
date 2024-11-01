@@ -1,6 +1,6 @@
 id: mteam
 name: 馒头
-domain: https://xp.m-team.io/
+domain: https://api.m-team.io/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/mteam.yml
 allow_auth_type:
