@@ -1,52 +1,43 @@
-id: HDarea
-name: 高清视界
-domain: https://hdarea.club/
+id: ptcafe
+name: 咖啡
+domain: https://ptcafe.club/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdarea.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/ptcafe.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 300, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movie UHD-4K" }
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies Blu-ray" }
-  - { id: 415, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies REMUX" }
-  - { id: 416, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies 3D" }
-  - { id: 410, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies 1080p" }
-  - { id: 411, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies 720p" }
-  - { id: 414, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies DVD" }
-  - { id: 412, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies WEB-DL" }
-  - { id: 413, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies HDTV" }
-  - { id: 417, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Movies iPad" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/Music Videos" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/体育" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "HQ Audio/无损音乐" }
+  - { id: 401, cate_level1: Movie, cate_level2: 电影, cate_level2_desc: "电影" }
+  - { id: 402, cate_level1: TV, cate_level2: 电视剧, cate_level2_desc: "电视剧" }
+  - { id: 403, cate_level1: TV, cate_level2: 综艺, cate_level2_desc: "综艺" }
+  - { id: 404, cate_level1: Documentary, cate_level2: 纪录片, cate_level2_desc: "纪录片" }
+  - { id: 405, cate_level1: Anime, cate_level2: 动漫, cate_level2_desc: "动漫" }
+  - { id: 406, cate_level1: Music, cate_level2: 音乐, cate_level2_desc: "音乐MV" }
+  - { id: 407, cate_level1: TV, cate_level2: 体育, cate_level2_desc: "体育" }
+  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "无损音乐" }
+  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "其他" }
 
 userinfo:
-  path: https://hdarea.club/index.php
+  path: https://ptcafe.club/rules.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://ptcafe.club/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://ptcafe.club/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="userdetails.php?id="]
+      selector: a[href^="https://ptcafe.club/userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -101,7 +92,7 @@ search:
 
 torrents:
   list:
-    selector: table.torrents > tr:has(table)
+    selector: table.torrents > tr:has(table.torrentname)
   fields:
     id:
       selector: a[href^="details.php?id="]
