@@ -24,24 +24,24 @@ category_mappings:
   - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
 
 userinfo:
-  path: https://hdtime.org/index.php
+  path: https://hdtime.org/rules.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="https://hdtime.org/userdetails.php?id="]
+      selector: a[href^="http://hdtime.org/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="https://hdtime.org/userdetails.php?id="]
+      selector: a[href^="http://hdtime.org/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="https://hdtime.org/userdetails.php?id="]
+      selector: a[href^="http://hdtime.org/userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
