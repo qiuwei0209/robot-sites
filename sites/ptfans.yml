@@ -1,8 +1,8 @@
-id: HDTime
-name: 高清时间
-domain: https://hdtime.org/
+id: ptfans
+name: ptfans
+domain: https://ptfans.cc/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdtime.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/ptfans.yml
 
 login:
   test:
@@ -10,38 +10,37 @@ login:
 
 category_mappings:
   - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
-  - { id: 424, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/Blu-Ray原盘" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
-  - { id: 414, cate_level1: Other, cate_level2: PC/Software, cate_level2_desc: "Software/软件" }
-  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/体育" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/MV" }
-  - { id: 408, cate_level1: Music, cate_level2: Audio,cate_level2_ desc: "Music/音乐" }
-  - { id: 410, cate_level1: Other, cate_level2: PC/Game, cate_level2_desc: "Game/游戏" }
-  - { id: 411, cate_level1: Other, cate_level2: PC/Doc, cate_level2_desc: "Doc/文档" }
-  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
+  - { id: 403, cate_level1: TV, cate_level2: 体育, cate_level2_desc: "体育" }
+  - { id: 404, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
+  - { id: 405, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
+  - { id: 406, cate_level1: Documentary, cate_level2: 纪录片, cate_level2_desc: "纪录片" }
+  - { id: 407, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Music Videos/音乐MV" }
+  - { id: 408, cate_level1: Movie, cate_level2: Movies,cate_level2_ desc: "Opera/戏曲 曲艺" }
+  - { id: 409, cate_level1: Game, cate_level2: 游戏, cate_level2_desc: "游戏" }
+  - { id: 412, cate_level1: Other , cate_level2: 电子书, cate_level2_desc: "电子书" }
+  - { id: 414, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
+  - { id: 415, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "二次元/动漫" }
+  - { id: 418, cate_level1: Other, cate_level2: 软件, cate_level2_desc: "软件" }
 
 userinfo:
-  path: https://hdtime.org/rules.php
+  path: https://ptfans.cc/rules.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="https://hdtime.org/userdetails.php?id="]
+      selector: a[href^="https://ptfans.cc/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="https://hdtime.org/userdetails.php?id="]
+      selector: a[href^="https://ptfans.cc/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="https://hdtime.org/userdetails.php?id="]
+      selector: a[href^="https://ptfans.cc/userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
@@ -96,7 +95,7 @@ search:
 
 torrents:
   list:
-    selector: table.torrents > tr:has(table)
+    selector: table.torrents > tr:has(table.torrentname)
   fields:
     id:
       selector: a[href^="details.php?id="]
@@ -181,3 +180,8 @@ torrents:
     description:
       selector: td:nth-child(2) > table > tr > td.embedded
       contents: -1
+    minimumratio:
+      text: 1
+    minimumseedtime:
+      #做种7天
+      text: 604,800
