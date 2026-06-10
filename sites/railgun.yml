@@ -1,68 +1,69 @@
-id: discfan
-name: 蝶粉
-domain: https://discfan.net/
+id: railgun
+name: RailGun
+domain: https://bilibili.download/
 encoding: UTF-8
-config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/discfan.yml
+config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/railgun.yml
 
 login:
   test:
     selector: a[href="logout.php"]
 
 category_mappings:
-  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/中国大陆" }
-  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/中国香港特别行政区" }
-  - { id: 405, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/中国台湾省" }
-  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/泰国" }
-  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/日本" }
-  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/韩国" }
-  - { id: 410, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Other/世界" }
-  - { id: 411, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
-  - { id: 414, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "MusicVideo/音乐" }
-  - { id: 413, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/记录" }
-  - { id: 416, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
-  - { id: 417, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/体育" }
-  - { id: 419, cate_level1: Anime , cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
+  - { id: 401, cate_level1: Movie, cate_level2: Movies, cate_level2_desc: "Movies/电影" }
+  - { id: 402, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Series/剧集" }
+  - { id: 403, cate_level1: TV, cate_level2: TV, cate_level2_desc: "TV Shows/综艺" }
+  - { id: 404, cate_level1: Documentary, cate_level2: TV/Documentary, cate_level2_desc: "Documentaries/纪录片" }
+  - { id: 405, cate_level1: Anime, cate_level2: TV/Anime, cate_level2_desc: "Animations/动漫" }
+  - { id: 406, cate_level1: Music, cate_level2: Audio/Video, cate_level2_desc: "Music Videos/MV" }
+  - { id: 407, cate_level1: TV, cate_level2: TV/Sport, cate_level2_desc: "Sports/体育" }
+  - { id: 408, cate_level1: Music, cate_level2: Audio, cate_level2_desc: "Music/音乐" }
+  - { id: 409, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Others/其他" }
+  - { id: 410, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Audio Books/有声书" }
+  - { id: 411, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Software/软件" }
+  - { id: 412, cate_level1: Other, cate_level2: Other, cate_level2_desc: "E-Books/电子书" }
+  - { id: 419, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Misc/其他" }
+  - { id: 420, cate_level1: Other, cate_level2: Other, cate_level2_desc: "Education/教育" }
 
 userinfo:
-  path: https://discfan.net/offers.php
+  path: https://bilibili.download/rules.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="https://discfan.net/userdetails.php?id="]
+      selector: a[href^="https://bilibili.download/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="https://discfan.net/userdetails.php?id="]
+      selector: a[href^="https://bilibili.download/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="https://discfan.net/userdetails.php?id="]
+      selector: a[href^="https://bilibili.download/userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
       method: next_sibling
       filters:
         - name: replace
-          args: [ '无限','inf' ]
+          args: [ '无限', 'inf' ]
     uploaded:
       default_value: 0
       selector: font[class="color_uploaded"]
       method: next_sibling
       filters:
         - name: replace
-          args: [ '无限','inf' ]
+          args: [ '无限', 'inf' ]
     downloaded:
       default_value: 0
       selector: font[class="color_downloaded"]
       method: next_sibling
       filters:
         - name: replace
-          args: [ '无限','inf' ]
+          args: [ '无限', 'inf' ]
     seeding:
       default_value: 0
       selector: img[alt="Torrents seeding"]
@@ -75,6 +76,7 @@ userinfo:
       case:
         a[class^="VIP"]: true
         "*": false
+
 search:
   paths:
     - path: torrents.php
@@ -86,7 +88,7 @@ search:
     incldead: 1
     # 0 all, 1 normal, 2 free, 3 2x, 4 2xfree, 5 50%, 6 2x50%, 7 30%
     spstate: "{% if query.free %}2{% else %}0{% endif %}"
-    # 0 title, 1 descr, 3 uploader, 4 imdburl (searching imdburl does not work with tt1234567, but descr is good)
+    # 0 title, 1 descr, 3 uploader, 4 imdburl
     search_area: "{% if query.imdb_id %}4{% else %}0{%endif%}"
     # 0 AND, 1 OR, 2 exact
     search_mode: 0
@@ -127,18 +129,16 @@ torrents:
       selector: a[href^="download.php?id="]
       attribute: href
     imdbid:
-      selector: div.imdb_100 > a
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
       filters:
         - name: re_search
-          args: [ 'tt\d+',0 ]
+          args: [ 'tt\d+', 0 ]
     date_elapsed:
-      # 站点设置，已去时间 (默认)
       selector: td:nth-child(4) > span[title]
       attribute: title
       optional: true
     date_added:
-      # 站点设置，实际时间
       selector: td:nth-child(4):not(:has(span))
       optional: true
     date:
@@ -147,7 +147,7 @@ torrents:
         - name: dateparse
           args: "%Y-%m-%d %H:%M:%S"
     size:
-      selector: td:nth-child(5)
+      selector: td.rowfollow:nth-child(5)
     seeders:
       selector: td:nth-child(6)
     leechers:
@@ -169,9 +169,9 @@ torrents:
         img.pro_2up: 2
         "*": 1
     free_deadline:
-      default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif%}"
+      default_value: "{% if fields['downloadvolumefactor']==0 %}{{max_time}}{% endif %}"
       default_value_format: '%Y-%m-%d %H:%M:%S.%f'
-      selector: img.pro_free,img.pro_free2up
+      selector: img.pro_free,img.pro_free2up,img.pro_2up
       attribute: onmouseover
       filters:
         - name: re_search

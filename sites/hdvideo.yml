@@ -1,6 +1,6 @@
 id: hdvideo
 name: hdvideo
-domain: https://hdvideo.one/
+domain: https://hdvideo.top/
 encoding: UTF-8
 config_url: https://ghproxy.com/https://raw.githubusercontent.com/qiuwei0209/robot-sites/main/sites/hdvideo.yml
 
@@ -19,24 +19,24 @@ category_mappings:
   - { id: 406, cate_level1: Music, cate_level2: Music, cate_level2_desc: "音轨" }
 
 userinfo:
-  path: https://hdvideo.one/index.php
+  path: https://hdvideo.top/rules.php
   item:
     selector: table[id="info_block"]
   fields:
     uid:
       default_value: 0
-      selector: a[href^="https://hdvideo.one/userdetails.php?id="]
+      selector: a[href^="https://hdvideo.top/userdetails.php?id="]
       attribute: href
       filters:
         - name: re_search
           args: [ '\d+', 0 ]
     user_group:
       default_value: ''
-      selector: a[href^="https://hdvideo.one/userdetails.php?id="]
+      selector: a[href^="https://hdvideo.top/userdetails.php?id="]
       attribute: class
     username:
       default_value: '未知用户名'
-      selector: a[href^="https://hdvideo.one/userdetails.php?id="]
+      selector: a[href^="https://hdvideo.top/userdetails.php?id="]
     share_ratio:
       default_value: ''
       selector: font[class="color_ratio"]
